@@ -1,0 +1,31 @@
+-- Criação da tabela Produtos
+CREATE TABLE Produtos (
+    id_produto INT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    preco DECIMAL(10,2) NOT NULL,
+    quantidade_estoque INT NOT NULL
+);
+
+-- Criação da tabela Pedidos
+CREATE TABLE Pedidos (
+    id_pedido INT PRIMARY KEY,
+    id_produto INT,
+    quantidade INT NOT NULL,
+    data_pedido DATE NOT NULL,
+    id_cliente INT NOT NULL,
+    FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto)
+);
+
+-- Inserção de registros na tabela Produtos
+INSERT INTO Produtos (id_produto, nome, preco, quantidade_estoque)
+VALUES
+(1, 'Livro A', 25.90, 50),
+(2, 'Livro B', 30.00, 100),
+(3, 'Café Expresso', 12.50, 150);
+
+-- Inserção de registros na tabela Pedidos
+INSERT INTO Pedidos (id_pedido, id_produto, quantidade, data_pedido, id_cliente)
+VALUES
+(1, 1, 2, '2025-05-20', 101),
+(2, 2, 1, '2025-05-21', 102),
+(3, 3, 3, '2025-05-22', 103);
